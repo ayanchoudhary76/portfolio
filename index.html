@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayan Choudhary - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom background animation */
+        body {
+            background: black;
+            overflow-x: hidden;
+        }
+        
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 34, 65, 0.6); /* Adjust opacity as needed */
+            z-index: -1;
+        }
+
+        .background-dots {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(15, 110, 169, 0.235), rgba(0, 0, 0, 0.263));
+            animation: moveDots 10s linear infinite;
+            z-index: -1;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            opacity: 0;
+            animation: fade-in-out 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveDots {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+
+        @keyframes fade-in-out {
+            0%, 100% { opacity: 0; }
+            25%, 75% { opacity: 1; }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pop-up {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 2s ease-in-out;
+        }
+
+        .animate-pop-up {
+            animation: pop-up 1.5s ease-in-out;
+        }
+
+        .nav-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .nav-buttons a {
+            margin-left: 10px;
+        }
+
+        /* Skill icons */
+        .skill-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-card img {
+            max-width: 50px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card a {
+            display: block;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        #home {
+            position: relative;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+        }
+
+    </style>
+</head>
+<body class="text-gray-100 bg-black">
+
+<div class="background-dots"></div>
+<div class="background-image" style="background-image: url('https://source.unsplash.com/1600x900/?code');"></div>
+<div class="background-overlay"></div>
+<div class="nav-buttons">
+    <a href="#home" class="bg-gray-800 py-2 px-4 rounded-full text-lg">Home</a>
+    <a href="#about" class="bg-gray-800 py-2 px-4 rounded-full text-lg">About</a>
+    <a href="#projects" class="bg-gray-800 py-2 px-4 rounded-full text-lg">Projects</a>
+    <a href="#skills" class="bg-gray-800 py-2 px-4 rounded-full text-lg">Skills</a>
+    <a href="#contact" class="bg-gray-800 py-2 px-4 rounded-full text-lg">Contact</a>
+</div>
+
+<div class="relative">
+    <!-- Home Section -->
+    <div id="home" class="h-screen flex items-center justify-center">
+        <div class="text-center">
+            <h1 class="text-6xl font-bold animate-pulse">Ayan Choudhary</h1>
+            <p class="text-2xl mt-4">B.Tech | Computer Science & Engineering</p>
+            <a href="#projects" class="mt-8 inline-block bg-gray-800 py-3 px-6 rounded-full text-xl animate-bounce">View My Work</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="min-h-screen flex items-center justify-center bg-gray-900 text-gray-100">
+        <div class="max-w-2xl text-center">
+            <h2 class="text-4xl font-bold mb-4 animate-fade-in">About Me</h2>
+            <p class="text-lg">I am Ayan Choudhary, currently pursuing a B.Tech in Computer Science & Engineering at Lovely Professional University. With a passion for development and a strong foundation in Python, C++, and IoT, I aim to create impactful projects.</p>
+            <h3 class="text-2xl font-semibold mt-6">Certifications</h3>
+            <ul class="list-disc list-inside mt-2">
+                <li>Data Analytics Essentials - Cisco</li>
+                <li>Python - HackerRank</li>
+                <li>Artificial Intelligence Fundamentals - IBM</li>
+                <li>Responsive Web Design - freeCodeCamp</li>
+            </ul>
+        </div>
+    </div>
+
+<!-- Projects Section -->
+<div id="projects" class="min-h-screen bg-gray-800 text-gray-100">
+    <div class="max-w-5xl mx-auto py-16">
+        <h2 class="text-4xl font-bold text-center mb-8 animate-pop-up">Projects</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-fade-in">
+                <img src="pencil-on-an-omr-sheet-F7X4BP.jpg" alt="Automated Paper Set Generator" class="mb-4 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4">Automated Paper Set Generator</h3>
+                <p>Developed a Python-based project to generate question paper sets from a dataset of questions.</p>
+            </div>
+            <!-- Project 2 -->
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 animate-fade-in">
+                <img src="green-rice-field_512300-200.jpg" alt="Automated Field Monitoring System" class="mb-4 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4">Automated Field Monitoring System</h3>
+                <p>Created a prototype to keep intruders away and prevent fires using IoT sensors and Arduino.</p>
+            </div>
+            <!-- Add more projects here -->
+        </div>
+    </div>
+</div>
+
+
+    <!-- Skills Section -->
+    <div id="skills" class="min-h-screen bg-gray-900 text-gray-100">
+        <div class="max-w-5xl mx-auto py-16">
+            <h2 class="text-4xl font-bold text-center mb-8 animate-pop-up">Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Skill 1 -->
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">Python</a>
+                </div>
+                <!-- Skill 2 -->
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+                    <a href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank">C++/C</a>
+                </div>
+                <!-- Skill 3 -->
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                    <a href="https://en.wikipedia.org/wiki/SQL" target="_blank">SQL</a>
+                </div>
+                <!-- Skill 4 -->
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                    <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML</a>
+                </div>
+                <!-- Skill 5 -->
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                    <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                </div>
+                <!-- Skill 6 -->
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                    <a href="https://en.wikipedia.org/wiki/CSS" target="_blank">CSS</a>
+                </div>
+                <!-- Skill 7 -->
+                <div class="skill-card">
+                    <img src="png-transparent-internet-of-things-world-2018-world-s-largest-iot-event-iot-world-technology-technology-internet-of-things-world-iot-thumbnail.png" alt="IoT">
+                    <a href="https://en.wikipedia.org/wiki/Internet_of_things" target="_blank">IoT</a>
+                </div>
+
+                <!-- Skill 8 -->
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino">
+                    <a href="https://en.wikipedia.org/wiki/Arduino" target="_blank">Arduino</a>
+                </div>
+
+                <!-- Skill 9 -->
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+                <a href="https://en.wikipedia.org/wiki/NumPy" target="_blank">NumPy</a>
+            </div>
+            <!-- Skill 10 -->
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+                <a href="https://en.wikipedia.org/wiki/Pandas_(software)" target="_blank">Pandas</a>
+            </div>
+            </div>
+        </div>
+    </div>
+<!-- Contact Section -->
+<div id="contact" class="min-h-screen bg-gray-800 text-gray-100">
+    <div class="max-w-3xl mx-auto py-16 text-center">
+        <h2 class="text-4xl font-bold mb-6 animate-fade-in">Contact Me</h2>
+        <p class="mb-6">Feel free to reach out to me at <a href="mailto:ayanchoudhary76@gmail.com" class="text-blue-500 underline">ayanchoudhary76@gmail.com</a>.</p>
+        <div class="flex justify-center space-x-4">
+            <a href="https://www.linkedin.com/in/ayanchoudhary76/" class="text-gray-400 hover:text-white">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://github.com/ayanchoudhary76" class="text-gray-400 hover:text-white">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+        </div>
+        <img src="depositphotos_272767556-stock-photo-website-page-contact-us-or.jpg" alt="Contact" class="mt-8 mx-auto rounded-lg">
+    </div>
+</div>
+
+
+</body>
+</html>
