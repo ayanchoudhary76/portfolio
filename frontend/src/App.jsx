@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import Training from './components/Training';
 import Certificates from './components/Certificates';
 import Achievements from './components/Achievements';
+import Education from './components/Education';
 import DownloadCV from './components/DownloadCV';
 import Contact from './components/Contact';
 
@@ -100,6 +101,7 @@ function App() {
           <Training />
           <Certificates />
           <Achievements />
+          <Education />
           <DownloadCV />
           <Contact />
         </main>
