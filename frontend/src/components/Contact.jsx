@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiLinkedin, FiGithub, FiSend, FiCheckCircle } from 'react-icons/fi';
 
@@ -11,43 +12,31 @@ const Contact = () => {
   });
 
   const [status, setStatus] = useState({ loading: false, success: false, error: '' });
+  const form = useRef();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("SUBMIT CLICKED");
-
     setStatus({ loading: true, success: false, error: '' });
 
-    try {
-      console.log("BEFORE FETCH");
-      const response = await fetch('https://portfolio-api-jq0o.onrender.com/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+    // IMPORTANT: REPLACE THESE WITH YOUR OWN EMAILJS CREDENTIALS
+    const serviceId = 'service_mxukzjj';
+    const templateId = 'template_fofmmcd';
+    const publicKey = 'y071B_S84OCJ60JZi';
 
-      console.log("AFTER FETCH");
-      
-      const data = await response.json();
-      
-      if (response.ok) {
-        console.log("SUCCESS");
+    emailjs.sendForm(serviceId, templateId, form.current, publicKey)
+      .then(() => {
         setStatus({ loading: false, success: true, error: '' });
         setFormData({ name: '', email: '', subject: '', message: '' });
         // Reset success state after a while
         setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 5000);
-      } else {
-        console.log("ERROR");
-        setStatus({ loading: false, success: false, error: data.error || 'Something went wrong.' });
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus({ loading: false, success: false, error: 'Failed to connect to the server.' });
-    }
+      }, (error) => {
+        console.error(error);
+        setStatus({ loading: false, success: false, error: error.text || 'Failed to send message.' });
+      });
   };
 
   return (
@@ -141,7 +130,7 @@ const Contact = () => {
 
             <h3 className="text-2xl font-bold font-display text-slate-800 dark:text-white mb-6">Send Me A Message</h3>
             
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6 relative z-10">
+            <form ref={form} onSubmit={handleSubmit} className="flex flex-col gap-6 relative z-10">
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-1 flex flex-col gap-2">
                   <label htmlFor="name" className="text-sm font-semibold text-slate-600 dark:text-slate-400">Your Name *</label>
