@@ -2,7 +2,7 @@ import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiMail } from 'react-icons/fi';
-
+import pfp from '../assets/pfp.jpeg'
 const Hero = () => {
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative pt-20">
@@ -69,9 +69,9 @@ const Hero = () => {
             {/* Image Container */}
             <div className="relative glass border border-white/20 w-full h-full rounded-full overflow-hidden flex items-center justify-center p-2 group">
               <div className="w-full h-full rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center overflow-hidden relative">
-                <span className="text-slate-400 font-display font-medium text-xl z-10 group-hover:opacity-0 transition-opacity">Profile Image</span>
+                {/* <span className="text-slate-400 font-display font-medium text-xl z-10 group-hover:opacity-0 transition-opacity">Profile Image</span> */}
                 {/* Replace src below with actual image later */}
-                <img src="https://via.placeholder.com/400?text=Profile+Image" alt="Ayan Choudhary" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-500 MixBlendMode" />
+                <img src={pfp} alt="Ayan Choudhary" className="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-100 transition-opacity duration-500 MixBlendMode" />
               </div>
             </div>
             
