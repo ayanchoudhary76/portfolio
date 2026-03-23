@@ -1,10 +1,32 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiX, FiInfo } from 'react-icons/fi';
+import bookXchange from '../assets/bookXchange.png';
+import goTogether from '../assets/goTogether.png';
+import osScheduling from '../assets/osScheduling.png';
+import hotelBooking from '../assets/hotelBooking.png';
 
 const projectsData = [
   {
     id: 1,
+    title: 'GoTogether',
+    timeline: 'March 2026 - Present ',
+    description: 'A ride-sharing and travel companion web application designed to reduce travel costs and enhance user experience by connecting people traveling on similar routes.',
+    features: [
+      'Create and join rides between locations',
+      'Cost-sharing mechanism for travelers',
+      'Travel companion matching system',
+      'Real-time ride availability and updates',
+      'Secure authentication and user profiles',
+      'REST API-based backend architecture'
+    ],
+    tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js'],
+    image: goTogether,
+    github: '#',
+    demo: '#'
+  },
+  {
+    id: 2,
     title: 'Book Exchange Platform',
     timeline: 'Jun 2025 – Aug 2025',
     description: 'A full-stack book exchange platform that enables users to list, discover, and exchange books with others through a structured and efficient workflow.',
@@ -16,28 +38,11 @@ const projectsData = [
       'Role-based access control'
     ],
     tech: ['PHP', 'Tailwind CSS', 'MySQL'],
-    image: 'https://via.placeholder.com/600x400/1d4ed8/ffffff?text=Book+Marketplace',
+    image: bookXchange,
     github: '#',
     demo: '#'
   },
-  {
-    id: 2,
-    title: 'GoTogether',
-    timeline: 'Add placeholder timeline',
-    description: 'A ride-sharing and travel companion web application designed to reduce travel costs and enhance user experience by connecting people traveling on similar routes.',
-    features: [
-      'Create and join rides between locations',
-      'Cost-sharing mechanism for travelers',
-      'Travel companion matching system',
-      'Real-time ride availability and updates',
-      'Secure authentication and user profiles',
-      'REST API-based backend architecture'
-    ],
-    tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js'],
-    image: 'https://via.placeholder.com/600x400/9333ea/ffffff?text=GoTogether',
-    github: '#',
-    demo: '#'
-  },
+
   {
     id: 3,
     title: 'Energy Efficient OS Scheduling',
@@ -51,7 +56,7 @@ const projectsData = [
       'Structured logging for performance analysis'
     ],
     tech: ['C++'],
-    image: 'https://via.placeholder.com/600x400/0ea5e9/ffffff?text=CPU+Scheduling',
+    image: osScheduling,
     github: '#',
     demo: '#'
   },
@@ -68,7 +73,7 @@ const projectsData = [
       'Backend built with Flask'
     ],
     tech: ['Python', 'Flask', 'RapidAPI'],
-    image: 'https://via.placeholder.com/600x400/10b981/ffffff?text=Hotel+Chatbot',
+    image: hotelBooking,
     github: '#',
     demo: '#'
   }

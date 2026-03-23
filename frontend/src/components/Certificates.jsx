@@ -1,27 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiExternalLink } from 'react-icons/fi';
+import privacyAndSecurity from '../assets/privacyAndSecurity.png';
+import aiFundamentals from '../assets/aiFundamentals.png';
+import dataAnalytics from '../assets/dataAnalytics.png';
 
 const certificatesData = [
   {
     title: 'Privacy and Security in Online Social Media',
     issuer: 'NPTEL',
     date: 'Apr 2025',
-    image: 'https://via.placeholder.com/400x300/eab308/ffffff?text=NPTEL+Certificate',
+    image: privacyAndSecurity,
     link: '#'
   },
   {
     title: 'Artificial Intelligence Fundamentals',
     issuer: 'IBM',
     date: 'Jul 2024',
-    image: 'https://via.placeholder.com/400x300/3b82f6/ffffff?text=IBM+Certificate',
+    image: aiFundamentals,
     link: '#'
   },
   {
     title: 'Data Analytics Essentials',
     issuer: 'Cisco',
     date: 'Jun 2024',
-    image: 'https://via.placeholder.com/400x300/22c55e/ffffff?text=Cisco+Certificate',
+    image: dataAnalytics,
     link: '#'
   }
 ];

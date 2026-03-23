@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiExternalLink, FiAward } from 'react-icons/fi';
+import training from '../assets/training.png';
 
 const Training = () => {
   return (
@@ -60,7 +61,7 @@ const Training = () => {
                 <span className="text-slate-400 font-display font-medium">Certificate Image</span>
               </div>
               <img 
-                src="https://via.placeholder.com/600x450/1e293b/ffffff?text=Think+Design+Prototype+Certificate" 
+                src={training} 
                 alt="Training Certificate" 
                 className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300 relative z-10 MixBlendMode"
               />

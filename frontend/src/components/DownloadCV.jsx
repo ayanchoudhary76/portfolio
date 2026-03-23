@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiDownload } from 'react-icons/fi';
+import cv from '../assets/AyanChoudhary.pdf';
 
 const DownloadCV = () => {
   return (
@@ -28,9 +29,9 @@ const DownloadCV = () => {
             </div>
 
             <motion.a 
-              href="/Ayan_Choudhary_Resume.pdf" 
+              href={cv} 
               target="_blank"
-              download
+              download="AyanChoudhary.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-5 rounded-2xl bg-white text-primary font-bold font-display text-lg flex items-center gap-3 shadow-2xl hover:shadow-white/20 transition-all flex-shrink-0"
