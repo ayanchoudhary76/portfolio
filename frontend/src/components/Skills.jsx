@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SiJavascript, SiPython, SiCplusplus, SiReact, SiTailwindcss, SiRedux, SiNodedotjs, SiExpress, SiMongodb, SiPostman, SiJsonwebtokens, SiGit } from 'react-icons/si';
+import { SiJavascript, SiPython, SiCplusplus, SiReact, SiTailwindcss, SiRedux, SiNodedotjs, SiExpress, SiMongodb, SiPostman, SiJsonwebtokens, SiGit, SiPhp } from 'react-icons/si';
 import { FaJava, FaDatabase, FaHtml5, FaCss3Alt } from 'react-icons/fa';
 import { TbApi } from 'react-icons/tb';
 
@@ -10,11 +10,10 @@ const skillCategories = [
 
 const skillsData = [
   { name: 'JavaScript', category: 'Languages', icon: SiJavascript, color: 'text-yellow-400' },
+  { name: 'PHP', category: 'Languages', icon: SiPhp, color: 'text-indigo-400' },
   { name: 'Java', category: 'Languages', icon: FaJava, color: 'text-orange-500' },
   { name: 'C++', category: 'Languages', icon: SiCplusplus, color: 'text-blue-600' },
   { name: 'Python', category: 'Languages', icon: SiPython, color: 'text-blue-500' },
-  { name: 'HTML', category: 'Languages', icon: FaHtml5, color: 'text-orange-600' },
-  { name: 'CSS', category: 'Languages', icon: FaCss3Alt, color: 'text-blue-500' },
   
   { name: 'React.js', category: 'Frontend', icon: SiReact, color: 'text-cyan-400', isMern: true },
   { name: 'Tailwind CSS', category: 'Frontend', icon: SiTailwindcss, color: 'text-cyan-500' },
@@ -22,6 +21,7 @@ const skillsData = [
   
   { name: 'Node.js', category: 'Backend', icon: SiNodedotjs, color: 'text-green-500', isMern: true },
   { name: 'Express.js', category: 'Backend', icon: SiExpress, color: 'text-gray-400', isMern: true },
+  { name: 'PHP', category: 'Backend', icon: SiPhp, color: 'text-indigo-400' },
   
   { name: 'MongoDB', category: 'Database', icon: SiMongodb, color: 'text-green-500', isMern: true },
   { name: 'SQL', category: 'Database', icon: FaDatabase, color: 'text-blue-400' },
@@ -35,6 +35,7 @@ const skillsData = [
   { name: 'Problem Solving', category: 'Soft Skills', icon: null, color: 'text-purple-400' },
   { name: 'Time Management', category: 'Soft Skills', icon: null, color: 'text-blue-400' },
   { name: 'Adaptability', category: 'Soft Skills', icon: null, color: 'text-teal-400' },
+  { name: 'Team Work', category: 'Soft Skills', icon: null, color: 'text-pink-400' },
 ];
 
 const Skills = () => {
@@ -46,7 +47,7 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-24 relative z-10">
-      <div className="text-center mb-16">
+      <div className="text-center mb-16 px-4 m-4">
         <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
           My <span className="text-gradient">Skills</span>
         </h2>
@@ -89,7 +90,7 @@ const Skills = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
-                key={skill.name}
+                key={`${skill.name}-${skill.category}`}
                 className={`glass p-6 rounded-2xl flex flex-col items-center justify-center gap-4 group cursor-pointer transition-all duration-500
                   ${isMern ? 'border-primary/50 shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)]' : 'hover:scale-105 hover:bg-white/80 dark:hover:bg-slate-800/80'}
                 `}

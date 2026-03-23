@@ -6,7 +6,7 @@ import { FiArrowRight, FiMail } from 'react-icons/fi';
 const Hero = () => {
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative pt-20">
-      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+      <div className="container mx-auto px-8 max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
         
         {/* Text Content */}
         <motion.div 

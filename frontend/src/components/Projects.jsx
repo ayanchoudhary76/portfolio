@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiExternalLink, FiGithub, FiX } from 'react-icons/fi';
+import { FiGithub, FiX } from 'react-icons/fi';
 
 const projectsData = [
   {
@@ -202,9 +202,6 @@ const Projects = () => {
                 <div className="flex gap-4 mt-auto pt-6 border-t border-slate-200 dark:border-slate-700/50">
                   <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                     <FiGithub className="text-xl" /> GitHub
-                  </a>
-                  <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-1">
-                    <FiExternalLink className="text-xl" /> Live Demo
                   </a>
                 </div>
               </div>
