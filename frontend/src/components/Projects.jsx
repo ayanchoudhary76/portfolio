@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiExternalLink, FiGithub, FiX, FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import { FiExternalLink, FiGithub, FiX } from 'react-icons/fi';
 
 const projectsData = [
   {
@@ -75,104 +75,62 @@ const projectsData = [
 ];
 
 const Projects = () => {
-  const scrollRef = useRef(null);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -400, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 400, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="projects" className="py-24 relative z-10 w-full overflow-hidden">
-      <div className="container mx-auto px-4 mb-12 flex justify-between items-end">
-        <div>
+    <section id="projects" className="py-24 relative z-10 w-full">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="mb-16 text-center md:text-left">
           <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg">
-            Some of my recent work
+            A selection of my recent full-stack and systems work
           </p>
         </div>
-        
-        {/* Scroll Controls */}
-        <div className="flex gap-4">
-          <button 
-            onClick={scrollLeft}
-            className="p-3 rounded-full glass glass-hover text-slate-800 dark:text-white group"
-            aria-label="Scroll left"
-          >
-            <FiChevronLeft className="text-2xl group-hover:-translate-x-1 transition-transform" />
-          </button>
-          <button 
-            onClick={scrollRight}
-            className="p-3 rounded-full glass glass-hover text-slate-800 dark:text-white group"
-            aria-label="Scroll right"
-          >
-            <FiChevronRight className="text-2xl group-hover:translate-x-1 transition-transform" />
-          </button>
+
+        {/* Grid Container Update */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+          {projectsData.map((project, idx) => (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              key={project.id}
+              onClick={() => setSelectedProject(project)}
+              className="glass rounded-3xl overflow-hidden group cursor-pointer hover:-translate-y-2 transition-transform duration-500 border border-white/20 dark:border-slate-700/50 shadow-xl flex flex-col h-full"
+            >
+              {/* Image Box */}
+              <div className="h-64 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10 opacity-70 group-hover:opacity-50 transition-opacity" />
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute bottom-6 left-6 z-20">
+                  <p className="text-white/90 text-sm font-medium mb-2 backdrop-blur-md px-3 py-1 rounded-full bg-black/20 inline-block border border-white/10">{project.timeline}</p>
+                  <h3 className="text-2xl font-bold text-white font-display drop-shadow-md">{project.title}</h3>
+                </div>
+              </div>
+
+              {/* Content Preview */}
+              <div className="p-8 flex flex-col flex-grow">
+                <p className="text-slate-600 dark:text-slate-300 mb-6 flex-grow">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-auto pt-2">
+                  {project.tech.map(tech => (
+                    <span key={tech} className="px-3 py-1 text-xs font-bold rounded-full bg-primary/10 text-primary-dark dark:text-primary-light border border-primary/20">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </div>
-
-      {/* Netflix Style Horizontal Scroll Container */}
-      <div 
-        ref={scrollRef}
-        className="flex gap-8 overflow-x-auto hide-scrollbar px-4 md:px-12 py-8 snap-x snap-mandatory"
-        style={{ scrollPadding: '0 3rem' }}
-      >
-        {projectsData.map((project, idx) => (
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            key={project.id}
-            onClick={() => setSelectedProject(project)}
-            className="min-w-[320px] md:min-w-[450px] flex-shrink-0 glass rounded-3xl overflow-hidden group cursor-pointer snap-center hover:scale-[1.03] transition-all duration-500 border border-white/20 dark:border-slate-700/50 shadow-2xl relative"
-          >
-            {/* Image Box */}
-            <div className="h-56 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity" />
-              <img 
-                src={project.image} 
-                alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute bottom-4 left-4 z-20">
-                <p className="text-white/80 text-sm font-medium mb-1">{project.timeline}</p>
-                <h3 className="text-2xl font-bold text-white font-display">{project.title}</h3>
-              </div>
-            </div>
-
-            {/* Content Preview */}
-            <div className="p-6">
-              <p className="text-slate-600 dark:text-slate-300 line-clamp-2 mb-4">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.slice(0, 3).map(tech => (
-                  <span key={tech} className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary-dark dark:text-primary-light border border-primary/20">
-                    {tech}
-                  </span>
-                ))}
-                {project.tech.length > 3 && (
-                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
-                    +{project.tech.length - 3}
-                  </span>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-        {/* Spacer to allow full scroll to end */}
-        <div className="min-w-[10vw] flex-shrink-0"></div>
       </div>
 
       {/* Modal / Expanded View for Desktop */}
@@ -194,7 +152,8 @@ const Projects = () => {
             >
               <button 
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors"
+                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+                aria-label="Close modal"
               >
                 <FiX className="text-2xl" />
               </button>
@@ -207,8 +166,8 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-900/80 md:from-transparent via-transparent to-transparent flex items-end p-6">
                   <div className="md:hidden">
+                    <span className="text-primary-light text-sm font-bold mb-1 block">{selectedProject.timeline}</span>
                     <h2 className="text-3xl font-bold font-display text-white">{selectedProject.title}</h2>
-                    <p className="text-white/80">{selectedProject.timeline}</p>
                   </div>
                 </div>
               </div>
@@ -216,16 +175,16 @@ const Projects = () => {
               <div className="p-8 md:w-1/2 flex flex-col justify-between">
                 <div>
                   <div className="hidden md:block mb-6">
-                    <h2 className="text-3xl font-bold font-display text-slate-800 dark:text-white">{selectedProject.title}</h2>
-                    <p className="text-primary-dark dark:text-primary-light font-medium">{selectedProject.timeline}</p>
+                    <h2 className="text-3xl font-bold font-display text-slate-800 dark:text-white leading-tight">{selectedProject.title}</h2>
+                    <p className="text-primary-dark dark:text-primary-light font-bold mt-2">{selectedProject.timeline}</p>
                   </div>
                   
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                      {selectedProject.description}
                   </p>
 
-                  <h4 className="font-semibold text-slate-800 dark:text-white mb-3 text-lg">Key Features:</h4>
-                  <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400 mb-8">
+                  <h4 className="font-bold text-slate-800 dark:text-white mb-3 text-lg border-b border-slate-200 dark:border-slate-700 pb-2">Key Features</h4>
+                  <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400 mb-8 font-medium">
                     {selectedProject.features.map((feature, i) => (
                       <li key={i}>{feature}</li>
                     ))}
@@ -233,19 +192,19 @@ const Projects = () => {
 
                   <div className="flex flex-wrap gap-2 mb-8">
                     {selectedProject.tech.map(tech => (
-                      <span key={tech} className="px-3 py-1 text-sm font-semibold rounded border border-primary/30 text-primary">
+                      <span key={tech} className="px-3 py-1 text-sm font-semibold rounded border border-primary/30 text-primary bg-primary/5">
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex gap-4 mt-auto pt-4 border-t border-slate-200 dark:border-slate-700/50">
-                  <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-medium transition-colors">
-                    <FiGithub /> GitHub
+                <div className="flex gap-4 mt-auto pt-6 border-t border-slate-200 dark:border-slate-700/50">
+                  <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    <FiGithub className="text-xl" /> GitHub
                   </a>
-                  <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-primary hover:bg-primary-dark text-white font-medium transition-colors">
-                    <FiExternalLink /> Live Demo
+                  <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-1">
+                    <FiExternalLink className="text-xl" /> Live Demo
                   </a>
                 </div>
               </div>

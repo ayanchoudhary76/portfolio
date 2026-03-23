@@ -9,14 +9,35 @@ import Achievements from './components/Achievements';
 import DownloadCV from './components/DownloadCV';
 import Contact from './components/Contact';
 
+// Helper to manage cookies
+const setCookie = (name, value, days) => {
+  const date = new Date();
+  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+  document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+};
+
+const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+};
+
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Load theme from cookie, default to true (dark mode)
+    const savedTheme = getCookie('theme');
+    if (savedTheme === 'light') return false;
+    return true;
+  });
 
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      setCookie('theme', 'dark', 365);
     } else {
       document.documentElement.classList.remove('dark');
+      setCookie('theme', 'light', 365);
     }
   }, [darkMode]);
 
@@ -33,32 +54,46 @@ function App() {
 
       {/* Main Content Z-index over background */}
       <div className="relative z-10 flex flex-col">
-        {/* Navigation Navbar */}
-        <nav className="fixed w-full z-50 glass px-6 py-4 flex justify-between items-center transition-all border-b border-white/10 shadow-sm backdrop-blur-md">
-          <a href="#hero" className="text-2xl font-bold font-display text-gradient cursor-pointer">
-            Ayan.
-          </a>
-          
-          <div className="flex items-center gap-6">
-            <div className="hidden md:flex gap-6 font-medium text-slate-600 dark:text-slate-300">
-              <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-              <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-              <a href="#training" className="hover:text-primary transition-colors">Experience</a>
-              <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-            </div>
+        {/* Upgraded Premium Floating Navbar */}
+        <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+          <nav className="w-full max-w-5xl rounded-full glass px-8 py-4 flex justify-between items-center transition-all border border-white/20 dark:border-slate-700 shadow-2xl backdrop-blur-xl bg-white/40 dark:bg-slate-900/40 hover:bg-white/60 dark:hover:bg-slate-900/60 duration-300">
+            <a href="#hero" className="text-3xl font-bold font-display text-gradient cursor-pointer drop-shadow-sm hover:scale-105 transition-transform">
+              Ayan.
+            </a>
             
-            <button 
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 w-10 h-10 flex items-center justify-center rounded-full glass glass-hover cursor-pointer"
-              aria-label="Toggle Theme"
-            >
-              <span className="text-lg">{darkMode ? '☀️' : '🌙'}</span>
-            </button>
-          </div>
-        </nav>
+            <div className="flex items-center gap-8">
+              <div className="hidden md:flex gap-8 font-semibold text-slate-700 dark:text-slate-300">
+                <a href="#skills" className="hover:text-primary dark:hover:text-primary-light transition-colors relative group">
+                  Skills
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#projects" className="hover:text-primary dark:hover:text-primary-light transition-colors relative group">
+                  Projects
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#training" className="hover:text-primary dark:hover:text-primary-light transition-colors relative group">
+                  Experience
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#contact" className="hover:text-primary dark:hover:text-primary-light transition-colors relative group">
+                  Contact
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              </div>
+              
+              <button 
+                onClick={() => setDarkMode(!darkMode)}
+                className="p-2 w-12 h-12 flex items-center justify-center rounded-full glass glass-hover cursor-pointer border border-transparent shadow-inner"
+                aria-label="Toggle Theme"
+              >
+                <span className="text-xl drop-shadow-md">{darkMode ? '☀️' : '🌙'}</span>
+              </button>
+            </div>
+          </nav>
+        </div>
 
-        {/* Portfolio Sections Rendered As Requested */}
-        <main className="flex flex-col w-full overflow-hidden">
+        {/* Portfolio Sections Rendered As Requested, with increased gap spacing */}
+        <main className="flex flex-col w-full overflow-hidden pt-12 md:pt-24 gap-12 md:gap-24">
           <Hero />
           <Skills />
           <Projects />
@@ -70,8 +105,9 @@ function App() {
         </main>
         
         {/* Footer */}
-        <footer className="w-full py-8 text-center text-slate-500 font-medium border-t border-slate-200 dark:border-slate-800/50 mt-12 bg-lightBg/50 dark:bg-darkBg/50 backdrop-blur-md z-10">
-          <p>© {new Date().getFullYear()} Ayan Choudhary. Built with MERN Stack.</p>
+        <footer className="w-full py-10 text-center text-slate-500 font-medium border-t border-slate-200 dark:border-slate-800/50 mt-12 bg-lightBg/50 dark:bg-darkBg/50 backdrop-blur-md z-10">
+          <p className="mb-2">© {new Date().getFullYear()} Ayan Choudhary.</p>
+          <p className="text-sm">Built with MERN Stack • Premium UI/UX</p>
         </footer>
       </div>
     </div>
