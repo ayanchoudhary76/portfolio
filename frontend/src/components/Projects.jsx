@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiX, FiInfo } from 'react-icons/fi';
-import bookXchange from '../assets/bookXchange.png';
+import bookXchange from '../assets/bookxchange.png';
 import goTogether from '../assets/goTogether.png';
 import osScheduling from '../assets/osScheduling.png';
 import hotelBooking from '../assets/hotelBooking.png';
