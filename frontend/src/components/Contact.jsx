@@ -18,23 +18,30 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("SUBMIT CLICKED");
+
     setStatus({ loading: true, success: false, error: '' });
 
     try {
+      console.log("BEFORE FETCH");
       const response = await fetch('https://portfolio-api-jq0o.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
+
+      console.log("AFTER FETCH");
       
       const data = await response.json();
       
       if (response.ok) {
+        console.log("SUCCESS");
         setStatus({ loading: false, success: true, error: '' });
         setFormData({ name: '', email: '', subject: '', message: '' });
         // Reset success state after a while
         setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 5000);
       } else {
+        console.log("ERROR");
         setStatus({ loading: false, success: false, error: data.error || 'Something went wrong.' });
       }
     } catch (error) {
