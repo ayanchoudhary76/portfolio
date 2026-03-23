@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiX } from 'react-icons/fi';
+import { FiGithub, FiX, FiInfo } from 'react-icons/fi';
 
 const projectsData = [
   {
@@ -98,12 +98,22 @@ const Projects = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               key={project.id}
-              onClick={() => setSelectedProject(project)}
-              className="glass rounded-3xl overflow-hidden group cursor-pointer hover:-translate-y-2 transition-transform duration-500 border border-white/20 dark:border-slate-700/50 shadow-xl flex flex-col h-full"
+              className="glass rounded-3xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500 border border-white/20 dark:border-slate-700/50 shadow-xl flex flex-col h-full"
             >
               {/* Image Box */}
               <div className="h-64 overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10 opacity-70 group-hover:opacity-50 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10 opacity-70 transition-opacity" />
+                
+                {/* Hover Action Buttons */}
+                <div className="absolute inset-0 z-30 flex items-center justify-center gap-6 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-slate-900/40 backdrop-blur-[2px]">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center hover:bg-white hover:scale-110 transition-all shadow-2xl translate-y-4 group-hover:translate-y-0 duration-300" title="Source Code">
+                    <FiGithub className="text-2xl" />
+                  </a>
+                  <button onClick={() => setSelectedProject(project)} className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-light hover:scale-110 transition-all shadow-2xl translate-y-4 group-hover:translate-y-0 duration-300 delay-75" title="View Details">
+                    <FiInfo className="text-2xl" />
+                  </button>
+                </div>
+
                 <img 
                   src={project.image} 
                   alt={project.title}
