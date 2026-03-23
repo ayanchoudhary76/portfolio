@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiX, FiInfo } from 'react-icons/fi';
 import bookXchange from '../assets/bookXchange.png';
@@ -22,8 +22,7 @@ const projectsData = [
     ],
     tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js'],
     image: goTogether,
-    github: '#',
-    demo: '#'
+    github: 'https://github.com/ayanchoudhary76/goTogether',
   },
   {
     id: 2,
@@ -39,8 +38,7 @@ const projectsData = [
     ],
     tech: ['PHP', 'Tailwind CSS', 'MySQL'],
     image: bookXchange,
-    github: '#',
-    demo: '#'
+    github: 'https://github.com/ayanchoudhary76/bookXchangePHP'
   },
 
   {
@@ -57,8 +55,7 @@ const projectsData = [
     ],
     tech: ['C++'],
     image: osScheduling,
-    github: '#',
-    demo: '#'
+    github: 'https://github.com/ayanchoudhary76/energy-efficent-os-scheduling'
   },
   {
     id: 4,
@@ -74,13 +71,22 @@ const projectsData = [
     ],
     tech: ['Python', 'Flask', 'RapidAPI'],
     image: hotelBooking,
-    github: '#',
-    demo: '#'
+    github: 'https://github.com/ayanchoudhary76/hotel-booking-chatbot'
   }
 ];
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <section id="projects" className="py-24 relative z-10 w-full">
@@ -173,13 +179,13 @@ const Projects = () => {
                 <FiX className="text-2xl" />
               </button>
 
-              <div className="md:w-1/2 h-64 md:h-auto overflow-hidden relative">
+              <div className="md:w-1/2 h-64 md:h-auto overflow-hidden relative bg-slate-100 dark:bg-slate-800/40 flex justify-center items-center p-4">
                 <img 
                   src={selectedProject.image} 
                   alt={selectedProject.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain rounded-lg"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-900/80 md:from-transparent via-transparent to-transparent flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-900/80 md:from-transparent via-transparent to-transparent flex items-end p-6 pointer-events-none">
                   <div className="md:hidden">
                     <span className="text-primary-light text-sm font-bold mb-1 block">{selectedProject.timeline}</span>
                     <h2 className="text-3xl font-bold font-display text-white">{selectedProject.title}</h2>

@@ -45,7 +45,7 @@ const Training = () => {
               
               <div className="pt-4">
                 <a 
-                  href="#" 
+                  href="https://drive.google.com/file/d/1OECgbo9yq4L4aBCpte8EYxhXrtbesa1u/view" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-slate-700 dark:border-slate-600 text-white hover:bg-slate-800 font-medium transition-colors"

@@ -33,17 +33,17 @@ const Achievements = () => {
               </div>
               <div>
                 <h3 className="text-3xl font-bold font-display text-slate-800 dark:text-white">LeetCode</h3>
-                <p className="text-yellow-600 dark:text-yellow-400 font-medium cursor-pointer hover:underline">@ayanchoudhary76</p>
+                <a href="https://leetcode.com/u/ayanchoudhary76/" target="_blank" rel="noopener noreferrer" className="text-yellow-600 dark:text-yellow-400 font-medium cursor-pointer hover:underline block mt-1">@ayanchoudhary76</a>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4 relative z-10">
               <div className="bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-center">
-                <p className="text-4xl font-bold font-display text-slate-800 dark:text-white mb-1">200+</p>
+                <p className="text-4xl font-bold font-display text-slate-800 dark:text-white mb-1">288*</p>
                 <p className="text-sm font-medium text-slate-500 whitespace-nowrap">Problems Solved</p>
               </div>
               <div className="bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-center">
-                <p className="text-4xl font-bold font-display text-slate-800 dark:text-white mb-1">Knight</p>
+                <p className="text-4xl font-bold font-display text-slate-800 dark:text-white mb-1">100 Days '24</p>
                 <p className="text-sm font-medium text-slate-500">Badge / Rating</p>
               </div>
             </div>
@@ -65,17 +65,17 @@ const Achievements = () => {
               </div>
               <div>
                 <h3 className="text-3xl font-bold font-display text-slate-800 dark:text-white">HackerRank</h3>
-                <p className="text-green-600 dark:text-green-400 font-medium cursor-pointer hover:underline">@ayanchoudhary76</p>
+                <a href="https://www.hackerrank.com/profile/ayanchoudhary76" target="_blank" rel="noopener noreferrer" className="text-green-600 dark:text-green-400 font-medium cursor-pointer hover:underline block mt-1">@ayanchoudhary76</a>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4 relative z-10">
               <div className="bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-center">
                 <p className="text-4xl font-bold font-display text-slate-800 dark:text-white mb-1">5 ★</p>
-                <p className="text-sm font-medium text-slate-500 whitespace-nowrap">Problem Solving</p>
+                <p className="text-sm font-medium text-slate-500 whitespace-nowrap">C++</p>
               </div>
               <div className="bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-center">
-                <p className="text-4xl font-bold font-display text-slate-800 dark:text-white mb-1">300+</p>
+                <p className="text-4xl font-bold font-display text-slate-800 dark:text-white mb-1">973*</p>
                 <p className="text-sm font-medium text-slate-500">Points</p>
               </div>
             </div>

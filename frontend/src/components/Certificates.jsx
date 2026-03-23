@@ -11,21 +11,21 @@ const certificatesData = [
     issuer: 'NPTEL',
     date: 'Apr 2025',
     image: privacyAndSecurity,
-    link: '#'
+    link: 'https://drive.google.com/file/d/1tKYwEJ-c-NVcJ8V5cNZJ9YgjN_HYpJ2k/view'
   },
   {
     title: 'Artificial Intelligence Fundamentals',
     issuer: 'IBM',
     date: 'Jul 2024',
     image: aiFundamentals,
-    link: '#'
+    link: 'https://www.credly.com/badges/aaa69b2e-ad9a-4450-a668-46485652e68b/linked_in_profile'
   },
   {
     title: 'Data Analytics Essentials',
     issuer: 'Cisco',
     date: 'Jun 2024',
     image: dataAnalytics,
-    link: '#'
+    link: 'https://www.credly.com/badges/9a069a07-07b4-43c5-a52d-e9b58f3321d3/public_url'
   }
 ];
 
